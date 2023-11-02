@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background-image: url(fundocopa.jpg);
+            background-repeat: repeat;
+            background-size: cover;
+
+
+        }
+
+
+        .btn.btn-primary {
+
+
+            margin: 0 auto;
+            text-align: center;
+            height: 120px;
+            width: 120px;
+            border-radius: 60px;
+            font-family: cursive;
+            background-color: red;
+
+        }
+
+        .container {
+
+
+            margin: 0 auto;
+            line-height: 500px;
+        }
+
+        img {
+
+            height: 320px;
+            width: 320px;
+            border-radius: 160px;
+            border: 5px solid brown;
+
+
+        }
+
+        .move {
+            text-align: center;
+        }
+       
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="font-size:100px; font-family:cursive;text-shadow:2px 2px 5px yellow;color:brown;text-align: center;">
+        Bandeiras da Copa do Mundo</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="coluna1" class="col">
+
+            </div>
+            <div id="coluna2" class="col">
+
+            </div>
+            <div id="coluna3" class="col">
+
+            </div>
+        </div>
+    </div>
+    <div class="move">
+        <button type="button" class="btn btn-primary" onclick="gerarbandeiras()">embaralhar</button>
+        <div>
+            <script>
+                function busca(vetor, aux) {
+
+                    for (let j = 0; j < vetor.length; j++) {
+                        if (aux == vetor[j])
+                            return 1;
+
+                    }
+                    return -1
+
+
+                }
+                function aleatorio() {
+                    var vetor = []
+
+                    for (let i = 0; i < 3; i++)
+                     {
+
+                        let aux = parseInt(getRandomArbitrary(0, 31))
+                        console.log(aux)
+
+                        let b 
+                        do {
+                            
+                            b = busca(vetor, aux) 
+                            if( b == -1)
+                                vetor[i] = aux;
+
+                            
+                            aux = parseInt(getRandomArbitrary(0, 31))
+                        }while (b== 1);
+                     
+                   
+                   
+
+                    }
+                    return vetor;
+                } 
+
+                    function getRandomArbitrary(min, max) {
+                        return Math.random() * (max - min) + min;
+                    }
+
+                    function gerarbandeiras() 
+                    {
+                        $(".cc").remove()
+                        pp = ""
+                        var bandeiras = ["Alemanha.png", "ArabiaSaudita.png", "catar.png", "Argentina.png", "BandeiradaAustralia.png", "BandeiradaCostaRica.png", "BandeiradoPaisdeGales.png", "Brasil.png", "Belgica.png", "camaroes.png", "Canada.png", "coreia.png", "Equador.png", "Espanha.png", "Belgica.png", "Croacia.png", "Dinamarca.png", "estadosunidos.png", "Franca.png", "gana.png", "Holanda.png", "Inglaterra.png", "ira.png", "japao.png", "marrocos.png", "mexico.png", "polonia.png", "senegal.png", "Servia.png", "Suica.png", "tunisia.png", "Uruguai.png",]
+                        var tbody = document.getElementById("coluna1")
+                        var linha = document.createElement("div")
+                        linha.classList.add("cc")
+                        let i, j, l;
+                        var vetaleatorio
+
+
+                        vetaleatorio = aleatorio()
+
+
+                        pp += "<img src=" + bandeiras[vetaleatorio[0]] + ">"
+                        linha.innerHTML = pp
+                        tbody.appendChild(linha)
+                        pp = ""
+                        linha.classList.add("cc")
+
+
+                        var tbody = document.getElementById("coluna2")
+                        var linha = document.createElement("div")
+
+
+
+
+                        pp += "<img src=" + bandeiras[vetaleatorio[1]] + ">"
+                        linha.innerHTML = pp
+                        tbody.appendChild(linha)
+                        linha.classList.add("cc")
+
+
+                        pp = ""
+                        var tbody = document.getElementById("coluna3")
+                        var linha = document.createElement("div")
+
+                        j = parseInt(getRandomArbitrary(0, 5));
+                        pp += "<img src=" + bandeiras[vetaleatorio[2]] + ">"
+
+                        linha.innerHTML = pp
+                        tbody.appendChild(linha)
+                        linha.classList.add("cc")
+
+
+
+                    }
+
+
+
+            </script>
+</body>
+
+</html>
